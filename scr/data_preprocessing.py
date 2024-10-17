@@ -1,3 +1,4 @@
+import pandas as pd
 
 def list_of_dictionaries_unique_categories(df, outside_column, categorical_key, condition_key, condition_value):
     unique_categories = set()
@@ -18,3 +19,10 @@ def count_matching_dicts(list_of_dicts, key, value):
                 number_of_matching_dicts += 1
 
     return number_of_matching_dicts
+
+
+dataframe = pd.read_json("C:/Users/domci/PycharmProjects/ml-solvro-recruitment/cocktail_dataset.json")
+
+dataframe["alcoholic_ingredients"] = dataframe["ingredients"].apply(count_matching_dicts, args=("alcohol", 1))
+
+print(dataframe)
