@@ -1,3 +1,16 @@
+
+
+def generalise_items_in_column(df, column_name, condition, generalised_name):
+    distinct_values_count = df[column_name].value_counts()
+    condition_indexes = []
+    for index, value in distinct_values_count.items():
+        if value < condition:
+            condition_indexes.append(index)
+    df[column_name] = df[column_name].apply(lambda item: generalised_name if item in condition_indexes else item)
+
+    return df
+
+
 def list_of_dictionaries_unique_categories(df, outside_column, categorical_key, condition_key, condition_value):
     unique_categories = set()
     for list_of_dictionaries in df[outside_column]:
