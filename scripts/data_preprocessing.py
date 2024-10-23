@@ -1,35 +1,32 @@
 import pandas as pd
-from utils import count_matching_dicts
-from utils import generalise_items_in_column
-from sklearn.preprocessing import OneHotEncoder
+from utils import *
 
-
-#import data using pandas
+# Import data using pandas
 dataframe = pd.read_json("C:/Users/domci/PycharmProjects/ml-solvro-recruitment/data/cocktail_dataset.json")
 
-#change categorical columns to category datatype
+# Drop columns that won't be used for clustering and create unnecesary noise
+dataframe.drop(["instructions", "imageUrl", "createdAt", "updatedAt"], axis=1, inplace=True)
+
+# Change categorical columns to category datatype
 dataframe = dataframe.astype({
     "category": "category",
     "glass": "category"
 })
 
-#encode category column to binary column "ordinaryDrink"
-dataframe["ordinaryDrink"] = dataframe["category"].apply(lambda category: 1 if category == "Ordinary Drink" else 0)
-dataframe = dataframe.drop("category", axis=1)
+# Encode the 'category' column to binary column 'ordinaryDrink'
+encode_one_category_from_strings(dataframe, "category", "ordinaryDrink")
 
-#generalise glass type's that occurred less than 3 times
-dataframe = generalise_items_in_column(dataframe, "glass", 3, "Other")
+# Generalize glass type's that occurred less than 3 times
+dataframe = generalize_items_in_column(dataframe, "glass", 3, "Other")
 
-#encode generalised glass column
-enc = OneHotEncoder(sparse_output=False)
-encoded_glass = enc.fit_transform(dataframe[["glass"]])
-encoded_glass_df = pd.DataFrame(encoded_glass, columns=enc.get_feature_names_out(['glass']))
-dataframe = pd.concat([dataframe, encoded_glass_df], axis=1)
-dataframe = dataframe.drop('glass', axis=1)
+# Encode generalized 'glass' column
+dataframe = one_hot_encode_column(dataframe, "glass")
 
+# Exclude a binary column IBA from 'tags' column
+dataframe = encode_one_category_from_lists(dataframe, "tags", "IBA")
 
 #dataframe["alcoholic_ingredients"] = dataframe["ingredients"].apply(count_matching_dicts, args=("alcohol", 0))
 
 #dataframe['num_ingredients'] = dataframe['ingredients'].apply(len)
 
-print(dataframe)
+print(dataframe["IBA"])
