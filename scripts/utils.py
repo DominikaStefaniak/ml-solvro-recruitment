@@ -56,3 +56,17 @@ def count_matching_dicts(list_of_dicts, key, value):
                 number_of_matching_dicts += 1
 
     return number_of_matching_dicts
+
+
+def sorted_column_items_counter(df, column_name, key_name):
+    items_counter = {}
+    for list_of_items in df[column_name]:
+        for item in list_of_items:
+            key_value = item[key_name]
+            if key_value in items_counter:
+                items_counter[key_value] += 1
+            else:
+                items_counter[key_value] = 1
+    sorted_items_counter = dict(sorted(items_counter.items(), key=lambda item: item[1], reverse=True))
+
+    return sorted_items_counter
