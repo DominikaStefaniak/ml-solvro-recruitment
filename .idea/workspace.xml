@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="68f3a8c1-3434-4884-8e75-f6fad6c8348f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/data_visualization-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/data_visualization-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/eda-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/eda-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/data_visualization.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/data_visualization.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/eda.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/eda.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/data_preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/data_preprocessing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,16 +63,5 @@
       <updated>1728297567813</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/utils.py</url>
-          <line>50</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
