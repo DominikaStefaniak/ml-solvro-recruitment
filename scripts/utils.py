@@ -1,5 +1,3 @@
-from unittest.mock import inplace
-
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 
@@ -70,25 +68,3 @@ def sorted_column_items_counter(df, column_name, key_name):
     sorted_items_counter = dict(sorted(items_counter.items(), key=lambda item: item[1], reverse=True))
 
     return sorted_items_counter
-
-
-def update_dict_list(list_of_dicts, key, general_value, values_to_change):
-    seen_values = set()
-    unique_dicts = []
-    for dictionary in list_of_dicts:
-        # Check if the current value should be generalized
-        if dictionary.get(key) in values_to_change:
-            dictionary[key] = general_value
-        # Add to unique_dicts only if it's not already seen
-        if dictionary[key] not in seen_values:
-            unique_dicts.append(dictionary)
-            seen_values.add(dictionary[key])
-
-    return unique_dicts
-
-
-def generalize_values_list_of_dicts(df, column_name, key, general_value, values_to_change):
-    updated_column = df[column_name].apply(lambda x: update_dict_list(x, key, general_value, values_to_change))
-    df[column_name] = updated_column
-
-    return df

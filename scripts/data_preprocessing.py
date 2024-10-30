@@ -32,11 +32,6 @@ df["numIngredients"] = df["ingredients"].apply(len)
 # Create a column that shows how many of the cocktails ingredients are alcoholic
 df["numAlcoholicIngredients"] = df["ingredients"].apply(count_matching_dicts, args=("alcohol", 1))
 
-# Generalize some of the most used ingredients
-#df = generalize_values_list_of_dicts(df, "ingredients", "name", "Sugar additive", ["Powdered Sugar", "Sugar"])
-#df = generalize_values_list_of_dicts(df, "ingredients", "name", "Lemon additive", ["Lemon Juice", "lemon", "Lemon Peel"])
-#df = generalize_values_list_of_dicts(df, "ingredients", "name", "Lime addictive", ["Lime", "Lime Juice"])
-
 # Encode most used ingredients in the ingredients column
 sorted_items_counter = sorted_column_items_counter(df, "ingredients", "name")
 
@@ -44,6 +39,9 @@ for ingredient in list(sorted_items_counter.keys()) [:20]:
     df[ingredient] = df["ingredients"].apply(
         lambda ingredients_list: 1 if any(ingredient_dict["name"] == ingredient for ingredient_dict in ingredients_list) else 0
     )
+
+# Drop the "ingredients" column since it won't be useful anymore
+df.drop("ingredients", axis=1, inplace=True)
 
 # Save the final dataframe to parquet so that it saves the information about columns datatypes
 df.to_parquet("../data/final_cocktail_dataset.parquet")

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68f3a8c1-3434-4884-8e75-f6fad6c8348f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/quantitative_evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/final_cocktail_dataset.parquet" beforeDir="false" afterPath="$PROJECT_DIR$/data/final_cocktail_dataset.parquet" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/final_cocktail_dataset_with_clusters.parquet" beforeDir="false" afterPath="$PROJECT_DIR$/data/final_cocktail_dataset_with_clusters.parquet" afterDir="false" />
@@ -50,6 +50,7 @@
     &quot;Python.lists_to_categorical.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.preprocessing-functions.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
