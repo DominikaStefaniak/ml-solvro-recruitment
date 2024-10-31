@@ -6,13 +6,13 @@ from umap import UMAP
 from sklearn.metrics import silhouette_score, davies_bouldin_score
 import os
 
-# To avoid user warning coming from KMeans model
+# To avoid user warning from KMeans model
 os.environ['OMP_NUM_THREADS'] = '1'
 
 # Import the prepared data
 df = pd.read_parquet("../data/final_cocktail_dataset.parquet")
 
-# Scale the data to improve the efficiency of the models
+# Scale data to improve models efficiency
 scaler = StandardScaler()
 df[["numIngredients", "numAlcoholicIngredients"]] = scaler.fit_transform(df[["numIngredients", "numAlcoholicIngredients"]])
 
@@ -39,13 +39,13 @@ for number in range(2, 11):
     silhouette_avg = silhouette_score(df_umap, clusters)
     davies_bouldin = davies_bouldin_score(df_umap, clusters)
 
-    # It's best when the Silhouette metric is close to 1 and Bouldin metric close to 0
-    # Strive for the biggest difference of these two metrics
+    # Best when Silhouette is close to 1 and Bouldin is close to 0
+    # Strive for largest difference between these two metrics
     if silhouette_avg - davies_bouldin > best_score:
         best_score = silhouette_avg - davies_bouldin
         best_eps_score = number
 
-# Use KMeans with the number of clusters that performed best according to the used metrics
+# Use KMeans with the best-performing number of clusters
 kmeans = KMeans(n_clusters=best_eps_score, random_state=42)
 df_umap["KMeans_clusters"] = kmeans.fit_predict(df_umap)
 
@@ -53,11 +53,11 @@ df_umap["KMeans_clusters"] = kmeans.fit_predict(df_umap)
 silhouette_avg_kmeans = silhouette_score(df_umap.iloc[:, :-1], df_umap["KMeans_clusters"])
 davies_bouldin_kmeans = davies_bouldin_score(df_umap.iloc[:, :-1], df_umap["KMeans_clusters"])
 
-# Print the results of the used metrics
+# Print the results of the used metrics for KMeans
 print(f'Number of clusters for best KMeans performance: {best_eps_score}')
 print(f'Silhouette score for KMeans: {silhouette_avg_kmeans}, Davies Bouldin score: {davies_bouldin_kmeans}')
 
-#DBSCAN
+#DBSCAN model
 
 # Search for the best performance of DBSCAN for different epsilon using both the Silhouette and Bouldin metric
 best_score = -1 # Worst possible score
@@ -77,7 +77,7 @@ for number in range(1, 12):
             best_score = silhouette_avg - davies_bouldin
             best_eps_score = number
 
-# create DBSCAN model with the eps that performed best according to the used metrics
+# Create DBSCAN model with the best-performing eps value
 dbscan = DBSCAN(eps=best_eps_score * 0.1, min_samples=5)
 df_umap['DBSCAN_clusters'] = dbscan.fit_predict(df_umap.iloc[:, :-1])
 
@@ -85,7 +85,7 @@ df_umap['DBSCAN_clusters'] = dbscan.fit_predict(df_umap.iloc[:, :-1])
 silhouette_avg_dbscan = silhouette_score(df_umap.iloc[:, :-2], df_umap["DBSCAN_clusters"])
 davies_bouldin_dbscan = davies_bouldin_score(df_umap.iloc[:, :-2], df_umap["DBSCAN_clusters"])
 
-# Print the results of the used metrics for dbscan model
+# Print the results of the used metrics for DBSCAN model
 print(f'Clusters created by DBSCAN: {df_umap["DBSCAN_clusters"].unique()}')
 print(f'Silhouette score for DBSCAN: {silhouette_avg_dbscan}, Davies Bouldin score: {davies_bouldin_dbscan}')
 

@@ -8,6 +8,7 @@ def encode_one_category_from_strings(df, column_name, category_name):
 
     return df
 
+
 def generalize_items_in_column(df, column_name, condition, generalized_name):
     distinct_values_count = df[column_name].value_counts()
     condition_indexes = []
@@ -45,6 +46,7 @@ def list_of_dictionaries_unique_categories(df, outside_column, categorical_key, 
                 unique_categories.add(dictionary[categorical_key])
 
     return unique_categories
+
 
 def count_matching_dicts(list_of_dicts, key, value):
     number_of_matching_dicts = 0
