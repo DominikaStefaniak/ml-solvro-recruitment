@@ -1,10 +1,16 @@
 # Cocktail Clustering Project
 
 ## Overview
-This project focuses on exploratory data analysis (EDA) and clustering of a cocktail dataset. The task involves conducting EDA, cleaning and preprocessing the data and performing clustering using **KMeans** and **DBSCAN** to identify unique clusters of cocktails based on their ingredients and characteristics.
+It's a recruitment project for the Solvro Scientific Club at Wrocław University of Science and Technology. It focuses on exploratory data analysis (EDA) and clustering of a cocktail dataset. The task involves conducting EDA, cleaning and preprocessing the data and performing clustering using **KMeans** and **DBSCAN** to identify unique clusters of cocktails based on their ingredients and other characteristics.
 
 ## Data 📋
-The dataset contains cocktails with associated ingredient lists and characteristics. It's stored in a `.json` file located in the `data` folder. This is loaded and processed into a DataFrame format for easy manipulation and analysis using Pandas.
+The dataset contains cocktails with associated ingredient lists and characteristics. It's stored in a `.json` file located in the `data` folder. This is loaded and processed into a DataFrame format for easy manipulation and analysis using Pandas.  
+
+## Repository Structure
+```data/:``` Raw and processed datasets.  
+```scripts/:``` Scripts for data preprocessing and clustering.  
+```notebooks/:``` Jupyter notebooks for EDA, cleaned data visualization and clustering visualization.  
+```requirements.txt:``` Dependency management files. 
 
 ## Quick start ⚡
 To replicate the experiments, follow steps listed below (in cmd).  
@@ -39,11 +45,12 @@ pip install -r requirements.txt
 
 #### Possible issues:
 - in venv "bin" file created instead of "Scripts" for windows: use command prompt or power shell, if you are then python may have been installed incorectly
-- error while libraries instalation: make sure to use python 3.12 or check the libraries versions compatible for your python version and change them in requireents file
+- error while libraries instalation: make sure to use python 3.12 or check the libraries versions compatible for your python version and change them in requirements file
 
-### 3. Steps of the experiments
+### 3. Steps of the experiments  
+Remember to always delete corresponding data file before running any of the .py files  
 - data analysis in **eda.ipynb** file
-- data cleaning and preprocessing in **data_preprocessing.py**
+- data cleaning and preprocessing in **data_preprocessing.py** 
 - data visualization in **data_visualization.ipynb**
 - additional preprocesing and clustering models with quantitative evaluation in **clustering.py**
 - qualtitative evaluations with summary in **clustering_results.ipynb**
