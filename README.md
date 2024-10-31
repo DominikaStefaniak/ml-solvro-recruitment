@@ -40,3 +40,11 @@ pip install -r requirements.txt
 #### Possible issues:
 - in venv "bin" file created instead of "Scripts" for windows: use command prompt or power shell, if you are then python may have been installed incorectly
 - error while libraries instalation: make sure to use python 3.12 or check the libraries versions compatible for your python version and change them in requireents file
+
+### 3. Steps of the experiments
+- data analysis in **eda.ipynb** file
+- data cleaning and preprocessing in **data_preprocessing.py**
+- data visualization in **data_visualization.ipynb**
+- additional preprocesing and clustering models with quantitative evaluation in **clustering.py**
+- qualtitative evaluations with summary in **clustering_results.ipynb**
+  
